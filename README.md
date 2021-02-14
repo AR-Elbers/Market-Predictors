@@ -9,6 +9,7 @@ Initial setup for Daniel Sobral, Anthony Elbers, Shebo Meebelo
 
 # Sample Dataset: 
 https://www.kaggle.com/jasonbrooks/datasets-of-social-unrest-1783-2020?select=2000.csv
+
 http://bloomberg-market-and-financial-news.p.rapidapi.com
 
 # Target/Label for ML:
