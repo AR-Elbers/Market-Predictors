@@ -1,78 +1,116 @@
-from sqlalchemy import create_engine, func
-engine = create_engine('sqlite:///:memory:', echo=True)
-
-from sqlalchemy.ext.declarative import declarative_base
-Base = declarative_base()
-
-from sqlalchemy.orm import sessionmaker
-Session = sessionmaker(bind=engine, autoflush=False)
-session = Session()
-
-from sqlalchemy import Column, Integer, String, Sequence
-import json
+import pandas as pd
 import numpy as np
+import sqlalchemy
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
+# from password import pw
+import json
 
-from flask import Flask
 
-class act_ret_db(Base):
-    __tablename__ = 'return_act'
+from flask import Flask, jsonify, render_template
 
-    id = Column(Integer, Sequence("index"), primary_key=True)
-    nas_return = Column(Integer)
-    nik_return = Column(Integer)
-    gold_return = Column(Integer)
-    bonds_return = Column(Integer)
-    average_return = Column(Integer)
-    day_count = Column(Integer)
 
-    def __repr__(self):
-        return "<act_ret_db(nas_return='%s', nik_return='%s', gold_return='%s',bonds_return='%s',average_return='%s',day_count='%s')>" % (self.nas_return, self.nik_return, self.gold_return, self.bonds_return, self.average_return, self.day_count)
+path = 'postgresql://postgres:postgres@localhost:5432/rpi_comp'
 
-Base.metadata.create_all(engine)
+engine = create_engine(path)
+conn = engine.connect()
 
-from sqlalchemy.ext.automap import automap_base
+# Access our DB through pandas dataframe - convert to json - record oriented
+return_act = pd.read_sql("SELECT * FROM returns_actual", conn).to_json(orient='records')
 
-Base = automap_base()
-# reflect the tables
-Base.prepare(engine, reflect=True)
+return_pre = pd.read_sql("SELECT * FROM returns_prediction", conn).to_json(orient='records')
 
-actual_returns = Base.classes.predictions
+vol_act = pd.read_sql("SELECT * FROM volatility_actual", conn).to_json(orient='records')
 
-#################################################
-# Flask Setup
-#################################################
+vol_pre = pd.read_sql("SELECT * FROM volatility_prediction", conn).to_json(orient='records')
+
+historic = pd.read_sql("SELECT * FROM historic_data", conn).to_json(orient='records')
+
+
+
+# Access database through sql alchemy
+# db = engine.execute('SELECT * FROM "rpi"').fetchall()
+
+# Create Session
+session = Session(engine)
+
+# Create Flask connection
 app = Flask(__name__)
 
 
+#################################################
+# Flask Routes
+#################################################
+
+@app.route("/api/v1.0/vol_pre")
+def vol_p():
+
+# Convert string to json 
+
+    data_json = json.loads(vol_pre)
+
+    return jsonify(data_json)
 
 
 
-@app.route("/api/v1.0/ReturnAct")
-def returnact():
-    session = Session(engine)
-    # Create our session (link) from Python to the DB
-    results = session.query(actual_returns).all()
-    # Convert list of tuples into normal list
-    data_json = json.dumps(results)
-    # results = session.query(Passenger.name, Passenger.age, Passenger.sex).all()
+@app.route("/api/v1.0/return_act")
+def ret_a():
 
-    # session.close()
+# Convert string to json 
+
+    data_json = json.loads(return_act)
+
+    return jsonify(data_json)
 
 
-    return data_json
+
+@app.route("/api/v1.0/return_pre")
+def ret_p():
+
+# Convert string to json 
+
+    data_json = json.loads(return_pre)
+
+    return jsonify(data_json)
+
+
+@app.route("/api/v1.0/vol_act")
+def vol_a():
+
+# Convert string to json 
+
+    data_json = json.loads(vol_act)
+
+    return jsonify(data_json)
+
+
+@app.route("/api/v1.0/historic")
+def hist():
+
+# Convert string to json 
+
+    data_json = json.loads(vol_act)
+
+    return jsonify(data_json)
+
+
 
 @app.route("/")
 def welcome():
     """List all available api routes."""
     return (
         f"Available Routes:<br>"
-        f"/api/v1.0/ReturnAct<br/>"
-        f"/api/v1.0/ReturnPre<br>"
-        f"/api/v1.0/VolatilityAct<br/>"
-        f"/api/v1.0/VolatilityPre<br>"
-        f"/api/v1.0/HistoricData<br/>"
+        f"/api/v1.0/return_act<br/>"
+        f"/api/v1.0/return_pre<br/>"
+        f"/api/v1.0/vol_act<br/>"
+        f"/api/v1.0/vol_pre<br>"
+        f"/api/v1.0/historic<br/>"
     )
 
-    
-if __name__ == '__main__':
+
+@app.route("/index")
+def index():
+    return render_template('index.html')
+
+if __name__ == "__main__":
     app.run(debug=True)
