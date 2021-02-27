@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+<head>
+        <meta charset="utf-8">
+        <title>Market Predictions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+         <!-- Bring in our bootstrap stylesheet -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+         <!-- CSS -->
+        <link rel="stylesheet" href="style.css">
+          
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand titles" href="index.html">Homepage</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>    
+           
+            <a class="navbar-brand titles" href="index.html">Market Assets Prices</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button> 
+          
+            <!-- <a class="navbar-brand titles" href="index.html">Civil Unrest</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>  -->
+             
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-right">
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <strong>Visualisations</strong>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="Viz1.html"><strong>Historical Assets Trends (1980-2019)</strong></a>
+                            <a class="dropdown-item" href="Viz2.html"><strong>Assets Trends Historical x Month</strong></a>
+                            <a class="dropdown-item" href="Viz3.html"><strong>Actual and Predicted x Day Count Month</strong></a>
+                            <a class="dropdown-item" href="Viz4.html"><strong>Avg Actual & Predicted Ret.x Day Count Qters</strong></a>
+                            <a class="dropdown-item" href="Viz5.html"><strong>Avg Actual & Predicted Vol. x Day Count Qters</strong></a>
+                            <a class="dropdown-item" href="Viz6.html"><strong>Assets Ret. Rolling Standard Deviation</strong></a>
+                            <a class="dropdown-item" href="Viz7.html"><strong>Actual and Predicted Returns and Volatility</strong></a>
+                            <!-- <a class="dropdown-item" href="Viz8.html"><strong>Ret. & Vol. Predictions by Day Count Qters </strong></a> -->
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <strong>Data</strong>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownData">
+                          <a class="dropdown-item" href="returnsactual2.html"><strong>Assets Returns Actual</strong></a>
+                          <a class="dropdown-item" href="returnspredicted.html"><strong>Assets Returns Predicted</strong></a>
+                          <a class="dropdown-item" href="volatilityactual.html"><strong>Assets Volatility Actual</strong></a>
+                          <a class="dropdown-item" href="volatilityprediction.html"><strong>Assets Volatility Predicted</strong></a>
+                          </div>
+                      </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="Analysis.html"><strong>Project Analysis</strong><span class="sr-only">(current)</span></a>
+                  </li>
+                               
+                </ul>
+               
+              </div>
+            </nav> 
+            <div class="wrapper">
+              <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <!-- <a class="navbar-brand" href="index.html">Visualisations
+                      <img class="nav-fin" src="/financial-markets.jpg">
+                    </a> -->
+                  </div>
+                </div>
+              </nav>
+              <!-- <div class="hero text-center">
+                <h3>Market Predictions</h3>
+                <p><strong><em>Performance of specific assets predicted on the basis of their correlations and through the lens of historical data</em></strong></p>
+              </div><hr> -->
+
+            <!-- <h1>Civil Unrest and the Financial Markets</h1><br> -->
+        <!-- <h2>An analysis of financial assets and their correlation with civil unrest</h2><br> -->
+      <div class="container block">
+        <div class ="row">
+         <div class = "col-md-12">
+          <div class="jumbotron text-center"><br>
+          <h2>Actual and Predicted Returns and Volatility</h2>
+          <!-- <div class="container">>
+            <iframe src="https://public.tableau.com/profile/nalishebo.meebelo#!/vizhome/AssetsPriceComparisonbyYear2/Story1?publish=yes" width="645" height="955"></iframe>
+          </div> -->
+        <div class='tableauPlaceholder' id='viz1614365220087' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;7X&#47;7XZYPD8QQ&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;7XZYPD8QQ' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;7X&#47;7XZYPD8QQ&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1614365220087');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1016px';vizElement.style.height='991px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+          
+          <!-- <div class="container-1">
+          <h5>Nalishebo Meebelo</h5>
+            <p style ="overflow-wrap: normal;">
+            <img width="300" class = "leftimage" src = "image3.jpg"/>
+          </div>
+
+          <div class="container-1">
+          <h5>Daniel Sobral</h5>
+            <p style ="overflow-wrap: normal;">
+            <img width="300" class = "leftimage" src = "image-7173790.png"/>
+          </div>
+        
+         <div class="container-1">
+         <h5>Anthony Elbers</h5>
+            <p style ="overflow-wrap: normal;">
+            <img width="300" height="400" class = "leftimage" src = "image2.png"/>
+          </div>
+            
+        </div>
+      </div>
+     </div>
+    </div> -->
+
+    <div class="block">
+      <div class ="row">
+       <div class = "col-md-12">
+        <div class="jumbotron text-centre"> <h3><strong>Highlights</strong></h3><br>
+          <p>These visaulations reveal the correlation of select market assets i.e. how equities, debt and gold correlate in the assets market. The project team was curious to see whether certain predictions can be made using selected historical data by using Machine Learning as an application-development style. 
+           </p>
+          <p style ="overflow-wrap: normal;">
+           
+        
+        </div>
+      </div>
+     </div>
+    </div>
+ 
+    <!-- <div class="block">
+      <div class ="row">
+       <div class = "col-md-12">
+        <div class="jumbotron text-right"> 
+            <p style ="overflow-wrap: normal;">
+            <img width="450" height = "300" class = "centerimage" src = "pexels-david-mcbee-730547.jpg"/>
+            <img width="400" height = "300" class = "centerimage" src = "graph-163509_1280.jpg"/>
+            <img width="450" height = "300" class = "centerimage" src = "financial-markets.jpg"/>
+        </div>
+      </div>
+     </div>
+    </div>
+  -->
+ <div>
+   <footer class="footer">
+    <span class="bottom">Copyright &copy; 2021 NDA BCS Project 3</span>
+  </footer>
+</div>
+    
+        <!-- jQuery and JS bundle w/ Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> -->
+     <!-- This is the d3 library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <!-- This is the data.js -->
+  <!-- <script src="static/js/data.js"></script> -->
+  <!-- This is the app.js and take note of the order of the 3. app.js uses data and data needs d3 -->
+  <!-- <script src="static/js/app.js"></script> -->
+    </body>
+</html>
